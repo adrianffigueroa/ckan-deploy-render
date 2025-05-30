@@ -12,4 +12,6 @@ COPY requirements.txt /srv/app/requirements.txt
 RUN pip install -r /srv/app/requirements.txt || echo "No se encontraron requerimientos adicionales"
 
 # Comando por defecto para ejecutar CKAN
-CMD ["ckan", "run", "-c", "/etc/ckan/ckan.ini"]
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
