@@ -24,6 +24,7 @@ services:
     ports:
       - "0.0.0.0:${CKAN_PORT_HOST}:5000"
     volumes:
+      - ./ckan.ini:/srv/app/ckan.ini
       - ckan_storage:/var/lib/ckan
       - ./src:/srv/app/src_extensions
       - pip_cache:/root/.cache/pip
