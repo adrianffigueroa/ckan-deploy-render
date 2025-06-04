@@ -6,7 +6,6 @@ blinker==1.8.2
 cachelib==0.13.0
 certifi==2024.7.4
 charset-normalizer==3.3.2
-ckan @ file:///usr/lib/ckan/default/src/ckan
 ckanapi==4.8
 # Editable install with no version control (ckanext-mitema==0.0.1)
 -e git+https://github.com/ckan/ckanext-scheming.git@4a4bf3366389902bc53ab654ec5caf1e6dd67a22#egg=ckanext_scheming
