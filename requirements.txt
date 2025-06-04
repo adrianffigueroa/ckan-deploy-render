@@ -8,6 +8,7 @@ certifi==2024.7.4
 charset-normalizer==3.3.2
 ckanapi==4.8
 # Editable install with no version control (ckanext-mitema==0.0.1)
+-e src/ckan
 -e git+https://github.com/ckan/ckanext-scheming.git@4a4bf3366389902bc53ab654ec5caf1e6dd67a22#egg=ckanext_scheming
 click==8.1.7
 docopt==0.6.2
