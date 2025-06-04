@@ -1,0 +1,56 @@
+{% set icon_map = {
+    'salud': 'heart-pulse',
+    'educacion': 'school',
+    'seguridad': 'cctv',
+    'ambiente': 'leaf',
+    'desarrollo': 'briefcase',
+    'economica': 'dollar-sign',
+    'transporte': 'bus',
+    'cultura': 'palette',
+    'deporte': 'dumbbell',
+    'turismo': 'mountain',
+    'vivienda': 'home',
+    'hacienda-y-finanzas': 'banknote',
+    'trabajo-y-empleo': 'user-check',
+    'obras-publicas': 'building-2',
+    'servicios-publicos': 'plug',
+    'gobierno-abierto': 'globe',
+    'participacion-ciudadana': 'users',
+    'genero-y-diversidad': 'venus',
+    'ninez-y-adolescencia': 'baby',
+    'adultos-mayores': 'user',
+    'ciencia-y-tecnologia': 'atom',
+    'produccion': 'factory',
+    'justicia': 'gavel',
+    'datos-demograficos': 'bar-chart',
+    'catastro-y-urbanismo': 'map',
+    'presupuesto-y-gasto-publico': 'wallet',
+    'movilidad-y-transito': 'traffic-cone'
+  } %}
+  
+  {% set icon = icon_map.get(group.name, 'globe') %}
+  
+  <div class="module module-narrow">
+    <div class="module-content">
+      <div class="image" style="text-align: center;">
+        <i data-lucide="{{ icon }}"></i>
+      </div>
+      <h1 class="heading">{{ group.display_name }}</h1>
+  
+      <ul class="unstyled stats">
+        <li>
+          <strong>{{ group.followers | default(0) }}</strong>
+          {{ _('Seguidores') }}
+        </li>
+        <li>
+          <strong>{{ group.package_count | default(0) }}</strong>
+          {{ _('Conjuntos de datos') }}
+        </li>
+        <li>
+          <strong>{{ group.member_count | default(0) }}</strong>
+          {{ _('Miembros') }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  

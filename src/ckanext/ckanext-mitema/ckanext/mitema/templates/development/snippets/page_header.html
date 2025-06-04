@@ -1,0 +1,16 @@
+{% if h.check_access('group_update', {'id': group_dict.id}) %}
+<h1>sghsdrhr</h1>
+  {% if group_dict.type == 'branding' %}
+    <a class="btn btn-primary"
+       href="{{ h.url_for('group.edit', id=group_dict.name) }}?type=branding">
+      <i class="fa fa-pencil"></i>
+      Administrar tema visual
+    </a>
+  {% else %}
+    <a class="btn btn-primary"
+       href="{{ h.url_for('group.edit', id=group_dict.name) }}">
+      <i class="fa fa-pencil"></i>
+      Administrar grupo
+    </a>
+  {% endif %}
+{% endif %}

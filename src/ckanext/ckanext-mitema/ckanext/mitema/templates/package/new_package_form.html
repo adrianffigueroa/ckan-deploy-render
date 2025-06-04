@@ -1,0 +1,19 @@
+{% ckan_extends %}
+<h1>prueba 1</h1>
+{% block form_fields_group %}
+<h1>prueba 2</h1>
+  <div class="form-group control-medium">
+    <label for="field-groups" class="form-label">Área temática</label>
+    <div class="controls">
+      <select name="groups__0__id" id="field-groups" class="form-control">
+        <option value="">-- Seleccione un grupo --</option>
+        {% for group in c.groups_available %}
+          <option value="{{ group.id }}"
+            {% if data.groups and group.id in data.groups %}selected="selected"{% endif %}>
+            {{ group.display_name or group.name }}
+          </option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: ckan-web
+    runtime: python
+    buildCommand: ""
+    startCommand: ./start.sh
+    envVars:
+      - key: CKAN_SITE_URL
+        value: https://ckan-adrian.onrender.com  # ajustar luego si cambia
+      - key: CKAN_SQLALCHEMY_URL
+        value: postgresql://postgres:adrian3852@db.xuownbmqnoifitpaybyv.supabase.co:5432/postgres
+      - key: REDIS_URL
+        value: redis-13094.c8.us-east-1-3.ec2.redns.redis-cloud.com:13094/0
+      - key: CKAN_DATASTORE_WRITE_URL
+        value: postgresql://postgres:adrian3852@db.rdeepdobjsvqpyirksnh.supabase.co:5432/postgres
+      - key: CKAN_DATASTORE_READ_URL
+        value: postgresql://postgres:adrian3852@db.rdeepdobjsvqpyirksnh.supabase.co:5432/postgres

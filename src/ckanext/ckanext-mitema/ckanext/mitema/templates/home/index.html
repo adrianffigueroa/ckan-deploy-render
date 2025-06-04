@@ -1,0 +1,46 @@
+{% ckan_extends %}
+
+{% block scripts %}
+  {{ super() }}
+  <script>
+    fetch('/api/3/action/package_search?sort=metadata_modified+desc&rows=5')
+      .then(res => res.json())
+      .then(data => {
+        const list = document.getElementById('ultimos-datasets');
+        list.innerHTML = ''; // Limpiar "Cargando..."
+        if (data.success && data.result.results.length > 0) {
+          data.result.results.forEach(pkg => {
+            const li = document.createElement('li');
+            li.innerHTML = `<a href="/dataset/${pkg.name}">${pkg.title}</a>
+                            <small> (${new Date(pkg.metadata_modified).toLocaleDateString()})</small>`;
+            list.appendChild(li);
+          });
+        } else {
+          const li = document.createElement('li');
+          li.textContent = 'Todavía no hay datasets publicados.';
+          list.appendChild(li);
+        }
+      })
+      .catch(error => {
+        const list = document.getElementById('ultimos-datasets');
+        list.innerHTML = '';
+        const li = document.createElement('li');
+        li.textContent = 'Error al cargar los datasets.';
+        list.appendChild(li);
+        console.error('Error al consultar la API:', error);
+      });
+  </script>
+{% endblock %}
+
+{% block content %}
+  {{ super() }}
+  <div class="container">
+  <div class="module-content">
+    <h2>Últimos datasets</h2>
+    <ul id="ultimos-datasets">
+      <li>Cargando...</li>
+    </ul>
+  </div>
+</div>
+{% endblock %}
+{% block home_featured %}{% endblock %}

@@ -1,0 +1,3 @@
+recursive-include ckanext/mitema/public *
+recursive-include ckanext/mitema/templates *
+recursive-include ckanext/mitema/fanstatic *

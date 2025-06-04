@@ -1,0 +1,269 @@
+:root {
+  --color-primario: rgba(74, 58, 255, 1);
+  --color-secundario: #a49cff;
+  --color-terciario: rgba(74, 58, 255, 0.1);
+  --color-fondo: #f5f5f5;
+  --color-texto: #333333;
+}
+
+
+
+.masthead {
+    background-color: rgba(74, 58, 255,0.08);
+    background-image: none;
+  }
+
+.masthead a {
+    color: rgba(74, 58, 255, 1) !important;
+    font-weight: 600;
+  }
+
+  .masthead li :hover {
+    background-color: white !important;
+    font-weight: 600;
+  }
+
+.account-masthead {
+    background-color: rgba(74, 58, 255,0.08);
+    background-image: none;
+}
+
+.account-masthead a {
+  color: rgba(74, 58, 255, 1) !important;
+}
+
+.account-masthead a :hover {
+  background-color: white !important;
+}
+
+.account-masthead .account ul li a :hover {
+  background-color: white !important;
+}
+
+.main{
+  background-color: black !important;
+  background-image: none !important;
+  background: linear-gradient(
+    to bottom, 
+  rgba(74, 58, 255, 0.08), 
+  rgba(164, 156, 255, 0)) !important
+}
+
+.module:first-child .module-heading {
+    background-color: rgba(164, 156, 255, 0.8) !important;
+    background-image: none !important;
+}
+
+header{
+  background-color: black;
+}
+
+div[role="main"] {
+    /* Tus estilos acá */
+    background: linear-gradient(
+    to bottom, 
+  rgba(74, 58, 255, 0.08), 
+  rgba(164, 156, 255, 0)
+);
+}
+
+.homepage {
+  color: black  !important;
+}
+
+.homepage .hero{
+  background-image: none !important;
+  background-color: transparent !important
+}
+
+.homepage .module-feeds{
+    background-image: none !important;
+    background-color: transparent;
+    
+}
+
+.homepage .module-promotion.card.box{
+    background-image: none !important;
+    background-color: white !important;
+    border-radius: 20px !important;
+    box-shadow: 0px 10px 50px rgba(74, 58, 255, 0.15) !important;
+}
+
+.homepage .module-search.card.box{
+    border-radius: 20px !important;
+    box-shadow: 0px 10px 50px rgba(74, 58, 255, 0.15) !important;
+
+}
+
+.homepage .module-search.card.box .tags{
+  border-radius: 15px !important;
+  background-color: rgba(74, 58, 255, 0.7) !important;
+}
+
+.homepage .module-search form{
+    background-image: none !important;
+    background-color: rgba(74, 58, 255, 0.5) !important;
+    border-radius: 20px !important;
+}
+
+.container .box {
+  border-top-left-radius: 30px !important;
+  border-top-right-radius: 30px !important;
+  background-color: transparent !important;
+}
+
+
+.site-footer {
+    background-color: rgba(74, 58, 255,0.08);
+    background-image: none;
+    color: rgba(102, 102, 102, 1)!important;
+}
+
+.site-footer a, .site-footer p, .site-footer label{
+    color: rgba(102, 102, 102, 1)!important;
+}
+
+
+nav.navbar a:hover{
+  background-color: white !important;
+}
+
+#main-navigation-toggle > ul > li.active > a {
+ 
+  background-color: white !important;
+}
+
+/* grupos */
+
+aside h2.module-heading{
+  background-image: none !important;
+  background-color: var(--color-terciario) !important;
+  border-top-left-radius: 15px !important;
+}
+
+.module-content{
+  padding: 20px !important;
+}
+
+.module-content .btn.btn-primary{
+  background-color: var(--color-primario) !important;
+  
+}
+
+.module-content .media-grid{
+  background-image: none !important;
+  background-color: white !important;
+  border-radius: 20px !important;
+  border-style: solid !important;
+  border-color: rgba(74, 58, 255, 0.1) !important;
+  box-shadow: 0px 10px 50px rgba(74, 58, 255, 0.08) !important;
+  
+}
+
+.module-content ul a{
+  border-radius: 10px !important;
+}
+
+.row.wrapper{
+  background-image: none !important;
+  border-radius: 20px !important;
+  box-shadow: 0px 10px 50px rgba(74, 58, 255, 0.15) !important;
+  --bs-gutter-x: 0 !important;
+}
+
+.row.wrapper aside,
+.row.wrapper div {
+  background-image: none !important;
+  background-color: transparent !important;
+}
+
+.media-image svg.lucide {
+  width: 64px;
+  height: 64px;
+  stroke: #4a3aff;
+  stroke-width: 1px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  display: block;
+  margin: 2px auto 0.5rem auto;
+  padding-top: 1rem !important;
+}
+
+.module.module-narrow .module-content .image svg.lucide {
+  width: 54px !important;
+  height: 54px !important;
+  stroke: #4a3aff !important;
+  stroke-width: 1px !important;
+  margin-bottom: 1rem !important;
+}
+
+.secondary .filters h2{
+  background-color: var(--color-terciario) !important;
+}
+
+.module .module-content.page-header{
+  background-color: var(--color-terciario) !important;
+  border-top-right-radius: 15px !important;
+}
+
+.module .module-content.page-header a{
+  background-color: var(--color-primario) !important;
+  color: white !important;
+}
+
+.module .module-content.page-header ul{
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+}
+
+.media-heading a{
+  color: black !important;
+}
+
+
+#content > div.row.wrapper > div > article > div > ul{
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 1rem !important; /* o lo que quieras para separación entre cards */
+}
+
+/* cargar set de datos */
+
+#dataset-edit a,
+#dataset-edit select,
+#dataset-edit textarea,
+#dataset-edit ul,
+#dataset-edit .select2-container .select2-container-multi .select2-choices {
+  box-shadow: 0px 10px 50px rgba(74, 58, 255, 0.1) !important;
+  border-radius: 8px !important;
+
+}
+
+#dataset-edit #field-title,
+#dataset-edit #field-url,
+#dataset-edit #field-version,
+#dataset-edit #field-author,
+#dataset-edit #field-author-email,
+#dataset-edit #field-maintainer,
+#dataset-edit #field-maintainer-email{
+  box-shadow: 0px 10px 50px rgba(74, 58, 255, 0.1) !important;
+  border-radius: 8px !important;
+}
+
+
+
+
+.input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback){
+  border-top-right-radius: 8px !important;
+  border-bottom-right-radius: 8px !important;
+  box-shadow: 0px 10px 50px rgba(74, 58, 255, 0.1) !important;
+}
+
+.input-group:not(.has-validation) > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu), .input-group:not(.has-validation) > .dropdown-toggle:nth-last-child(n+3){
+  border-top-left-radius: 8px !important;
+  border-bottom-left-radius: 8px !important;
+  box-shadow: 0px 10px 50px rgba(74, 58, 255, 0.1) !important;
+}

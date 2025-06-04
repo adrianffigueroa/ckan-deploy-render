@@ -1,0 +1,35 @@
+{% ckan_extends %}
+<p style="color: green;">Esta línea está fuera de bloques y debería verse siempre</p>
+
+
+{% block page_primary_actions %}
+<p style="color: red;">BLOCK page_primary_actions está activo</p>
+  {% if h.check_access('group_update', {'id': group_dict.id}) %}
+    {% if group_dict.type == 'branding' %}
+      <li>
+        <a class="btn btn-primary"
+          href="{{ '/group/edit/' + group_dict.name + '?type=' + group_dict.type }}">
+          <i class="fa fa-pencil"></i>
+          Administrar tema visual
+        </a>
+      </li>
+      <li><p>hola!!</p></li>
+    {% else %}
+      <li>
+        <a class="btn btn-primary"
+          href="{{ h.url_for('group.edit', id=group_dict.name) }}">
+          <i class="fa fa-pencil"></i>
+          Administrar grupo
+        </a>
+      </li>
+    {% endif %}
+    <h3>{{ group_dict.type }}</h3>
+  <h3>hola!!</h3>
+  {% endif %}
+{% endblock %}
+
+{% block primary_content_inner %}
+
+  {{ super() }}
+{% endblock %}
+

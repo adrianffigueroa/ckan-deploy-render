@@ -1,0 +1,22 @@
+<div class="control-group">
+    <label class="control-label" for="field-groups">
+      Área temática
+    </label>
+    <div class="controls">
+      {% set groups = h.get_available_groups() %}
+      {% if groups %}
+        <select name="groups__0__id" id="field-groups" class="form-control">
+          <option value="">-- Seleccione un grupo --</option>
+          {% for group in groups %}
+            <option value="{{ group.name }}"
+              {% if data.groups and data.groups[0].id == group.name %}selected{% endif %}>
+              {{ group.display_name or group.name }}
+            </option>
+          {% endfor %}
+        </select>
+      {% else %}
+        <p class="text-warning">⚠️ No hay áreas temáticas disponibles. Cree al menos un grupo desde la administración.</p>
+      {% endif %}
+    </div>
+  </div>
+  

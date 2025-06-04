@@ -1,0 +1,48 @@
+<div id="color-preview-container" style="margin-top: 1em;"></div>
+
+<script>
+  function mostrarVistaPreviaColores() {
+    const acercaTextarea = document.querySelector('#field-about')
+    const previewContainer = document.getElementById('color-preview-container')
+    if (!acercaTextarea || !previewContainer) return
+
+    let json = null
+    try {
+      json = JSON.parse(acercaTextarea.value)
+    } catch (e) {
+      previewContainer.innerHTML = '<p style="color:gray;font-size:0.9em">⚠️ No se pudo interpretar el contenido como JSON.</p>'
+      return
+    }
+
+    // Extraer versión si existe
+    const version = json.version
+    // Filtrar claves que sean colores (excluye "version" y otras no relacionadas)
+    const colores = Object.entries(json).filter(([key, _]) => key !== 'version')
+
+    const htmlColores = colores
+      .map(([key, value]) => `
+        <div style="display:inline-block;margin:0 8px 8px 0;text-align:center;">
+          <div style="width:32px;height:32px;background:${value.trim()} !important;border:1px solid #ccc;border-radius:4px;"></div>
+          <div style="font-size:0.75em;color:#555;">${key}</div>
+        </div>
+      `)
+      .join('')
+
+    previewContainer.innerHTML = `
+      <label style="display:block;margin-bottom:0.5em;font-weight:bold;">Vista previa de colores:</label>
+      ${version ? `<div style="margin-bottom:0.5em;font-size:0.85em;color:#333;">Versión: <strong>${version}</strong></div>` : ''}
+      <div style="display:flex;flex-wrap:wrap;">${htmlColores}</div>
+    `
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    setTimeout(() => {
+      mostrarVistaPreviaColores()
+
+      const acerca = document.querySelector('#field-about')
+      if (acerca) {
+        acerca.addEventListener('input', mostrarVistaPreviaColores)
+      }
+    }, 200)
+  })
+</script>

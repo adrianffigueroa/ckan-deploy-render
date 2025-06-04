@@ -1,0 +1,27 @@
+{% set intro = g.site_intro_text %}
+
+<div class="module-promotion card box">
+  <div>
+    {% if intro %}
+      {{ h.render_markdown(intro) }}
+    {% else %}
+      <h1 class="page-heading">{{ _("Welcome to CKAN") }}</h1>
+      <p>
+        {% trans %}Este es el sitio Administrador de la aplicación. Desde acá podras crear, editar, y eliminar los Conjuntos de Datos, las Organizaciones y los Grupos.
+        Para eso debes iniciar sesión con las credenciales de Administrador.
+        {% endtrans %}
+      </p>
+    {% endif %}
+  </div>
+
+  {% block home_image %}
+    <section class="featured media-overlay hidden-xs">
+      <!-- <h2 class="media-heading">{% block home_image_caption %}{{ _("This is a featured section") }}{% endblock %}</h2>
+      {% block home_image_content %}
+        <a class="media-image" href="#">
+          <img class="img-fluid" src="{{ h.url_for_static('/base/images/placeholder-420x220.png') }}" alt="Placeholder" />
+        </a>
+      {% endblock %} -->
+    </section>
+  {% endblock %}
+</div>

@@ -1,0 +1,85 @@
+name: Cypress
+on:
+#  pull_request:
+  workflow_call:
+  workflow_dispatch:
+env:
+  NODE_VERSION: '16'
+  PYTHON_VERSION: '3.9'
+
+permissions:
+  contents: read
+
+jobs:
+  cypress:
+    runs-on: ubuntu-latest
+    services:
+      ckan_postgres:
+        image: postgres:15
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        env:
+          POSTGRES_USER: ckan_default
+          POSTGRES_PASSWORD: pass
+          POSTGRES_DB: ckan_test
+
+      ckan_redis:
+        image: redis
+        ports:
+          - 6379:6379
+      ckan_solr:
+        image: ckan/ckan-solr:2.11-solr9
+        ports:
+          - 8983:8983
+
+    env:
+      CKAN_SQLALCHEMY_URL: postgresql://ckan_default:pass@localhost/ckan_test
+      CKAN_SOLR_URL: http://localhost:8983/solr/ckan
+      CKAN_REDIS_URL: redis://localhost:6379/1
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install python deps
+        run: |
+         pip install -U pip
+         pip install -r requirements.txt -r dev-requirements.txt -e.
+         pip check
+
+      - name: Init environment
+        run: |
+          ckan -c test-core-ci.ini db init
+          #cypress testing requires activity plugin to be active
+          ckan config-tool test-core-ci.ini "ckan.plugins = activity"
+
+      - name: Run Cypress
+        uses: cypress-io/github-action@v6
+        with:
+          start: ckan -c test-core-ci.ini run
+
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+          if-no-files-found: ignore
+
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-videos
+          path: cypress/videos
+          if-no-files-found: ignore

@@ -1,0 +1,51 @@
+{% ckan_extends %}
+
+{% block primary_content_inner %}
+  {% set group_type = group_dict.get('type', 'group') %}
+  {% if group_type == 'branding' %}
+    <form method="post" class="dataset-form form-horizontal" enctype="multipart/form-data">
+      {% if error_summary %}
+        {% snippet 'snippets/error_summary.html', errors=error_summary %}
+      {% endif %}
+
+      <input type="hidden" name="group_type" value="branding">
+      {% snippet 'snippets/csrf_input.html' %}
+
+      <div class="control-group">
+        <label class="control-label" for="name">Identificador del tema</label>
+        <div class="controls">
+          <input id="name" name="name" type="text" value="{{ data.name or group_dict.name }}" readonly>
+        </div>
+      </div>
+
+      <fieldset>
+        <legend>Configuración visual del portal</legend>
+
+        <div class="control-group">
+          <label class="control-label" for="extras__0__value">Color primario</label>
+          <div class="controls">
+            <input type="hidden" name="extras__0__key" value="color_primario">
+            <input id="extras__0__value" name="extras__0__value" type="text"
+              value="{{ data['extras__0__value'] or group_dict.extras.color_primario or '' }}">
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label" for="extras__1__value">Color secundario</label>
+          <div class="controls">
+            <input type="hidden" name="extras__1__key" value="color_secundario">
+            <input id="extras__1__value" name="extras__1__value" type="text"
+              value="{{ data['extras__1__value'] or group_dict.extras.color_secundario or '' }}">
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="form-actions">
+        <button type="submit" class="btn primary">Guardar cambios</button>
+        <a class="btn" href="{{ h.url_for('group.read', id=group_dict.name) }}">Cancelar</a>
+      </div>
+    </form>
+  {% else %}
+    {{ super() }}
+  {% endif %}
+{% endblock %}

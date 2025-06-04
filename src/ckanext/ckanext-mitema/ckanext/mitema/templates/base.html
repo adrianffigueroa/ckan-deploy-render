@@ -1,0 +1,8 @@
+{% ckan_extends %}
+
+{% block custom_styles %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{ h.url_for_static('/base/vendor/fontawesome/css/all.min.css') }}">
+
+  <link rel="stylesheet" href="/mitema.css" />
+{% endblock %}
