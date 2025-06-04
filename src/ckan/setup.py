@@ -35,4 +35,10 @@ setup(
         ],
     },
     extras_require=extras_require,
+    entry_points={
+        'paste.app_factory': [
+            'main = ckan.config.middleware:make_app',
+        ],
+    },
 )
+
